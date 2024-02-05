@@ -1,16 +1,16 @@
 #####################################################################
 # Block-1: Terraform Settings Block
 terraform {
-  required_version = "~> 1.6"
+  required_version = "~> 1.4"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 5.0"
+      version = ">= 4.0"
     }
   }
   # Adding Backend as S3 for Remote State Storage with State Locking
   backend "s3" {
-    bucket = "terraform-terraform-learning"
+    bucket = "terraform-stacksimplify"
     key    = "dev2/terraform.tfstate"
     region = "us-east-1"  
 
@@ -86,7 +86,7 @@ module "ec2_cluster" {
   version                = "~> 2.0"
 
   name                   = "my-modules-demo"
-  #instance_count         = 2
+  instance_count         = 2
 
   ami                    = data.aws_ami.amzlinux.id
   instance_type          = "t2.micro"
